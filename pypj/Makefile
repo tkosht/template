@@ -30,14 +30,15 @@ export DOCKER=docker
 export PRINT_HELP_PYSCRIPT
 export START_DOCKER_CONTAINER
 export PYTHONPATH=$(printenv PYTHONPATH):$(PWD)
-export PROJECT_NAME=project
-export PYTHON_MODULE=$(PROJECT_NAME)
+export PROJECT_NAME=pypj
+export PYTHON_MODULE=project
 export TEST_MODULE=tests
 export IMAGE_NAME=$(PROJECT_NAME)-image
 export CONTAINER_NAME=$(PROJECT_NAME)-container
 export DATA=s3://aaa
 export PYTHON=python3
 export DOCKERFILE=docker/Dockerfile
+export LOG_DIR=log
 
 ###########################################################################################################
 ## ADD TARGETS FOR YOUR TASK
@@ -53,6 +54,9 @@ help:
 
 init: init-docker init-data ## initialize repository for traning
 
+init-log:
+	mkdir -p $(LOG_DIR)
+
 init-data: ## download data
 	-aws s3 sync $(DATA) ./data/
 
@@ -60,12 +64,12 @@ init-docker: ## initialize docker image
 	$(DOCKER) build -t $(IMAGE_NAME) -f $(DOCKERFILE) .
 
 logger decorator:
-	python $(PROJECT_NAME)/$@.py
+	python $(PYTHON_MODULE)/$@.py
 
 create-container: ## create docker container
 	$(DOCKER) run -it -v $(PWD):/work --name $(CONTAINER_NAME) $(IMAGE_NAME)
 
-test:
+test: init-log
 	$(eval logfile := -c log/test_project.log)
 	$(eval config := -c config/setup.cfg)
 	touch $(logfile)
@@ -77,7 +81,7 @@ run-cov-server:
 
 lint: ## check style with flake8
 	$(eval config := --config=config/setup.cfg)
-	flake8 $(PROJECT_NAME) $(TEST_MODULE) $(config)
+	flake8 $(PYTHON_MODULE) $(TEST_MODULE) $(config)
 
 doc:
 	$(eval config := --config=config/setup.cfg)
