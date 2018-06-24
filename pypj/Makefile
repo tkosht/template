@@ -66,8 +66,10 @@ create-container: ## create docker container
 	$(DOCKER) run -it -v $(PWD):/work --name $(CONTAINER_NAME) $(IMAGE_NAME)
 
 test:
+	$(eval logfile := -c log/test_project.log)
 	$(eval config := -c config/setup.cfg)
-	truncate --size=0 log/test_*
+	touch $(logfile)
+	truncate --size=0 $(logfile)
 	pytest $(config)
 
 run-cov-server:
