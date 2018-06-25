@@ -1,0 +1,6 @@
+*~ export-ignore
+.*.swp export-ignore
+.DS_Store export-ignore
+.git export-ignore
+.gitignore export-ignore
+.gitattributes export-ignore
