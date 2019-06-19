@@ -1,7 +1,7 @@
 #!/bin/sh
 
 except='(nvidia/cuda|CONTAINER|REPOSITORY)'
-runnnig_file=".runnnig"
+runnnig_file=".running"
 docker ps | egrep -v "$except" | awk '{print $1}' > $runnnig_file
 container_list=$(docker ps -a | egrep -v "$except" \
     | egrep -v -f $runnnig_file | awk '{print $1}')
@@ -17,3 +17,4 @@ do
     docker rmi $img
 done
 
+rm -f $runnnig_file
