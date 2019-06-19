@@ -23,4 +23,4 @@ fi
 echo "$bash_rc" >> ~/.bashrc
 
 eval "$bash_rc"
-sh $d/make_pyenv.sh lab
+# sh $d/make_pyenv.sh lab

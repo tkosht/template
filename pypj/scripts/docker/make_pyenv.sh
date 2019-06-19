@@ -7,10 +7,11 @@ if [ "$1" != "" ]; then
     env_name="$1"
 fi
 
-conda="miniconda3-latest"
-pyenv install -s $conda
+# pyver="miniconda3-latest"
+pyver="python3.6"
+pyenv install -s $pyver
 pyenv versions
-pyenv virtualenv $conda $env_name
+pyenv virtualenv $pyver $env_name
 
 mkdir -p ~/pj/$env_name
 cd ~/pj/$env_name
