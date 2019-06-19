@@ -3,6 +3,8 @@ FROM nvidia/cuda
 MAINTAINER tkosht <takehito.oshita.business@gmail.com>
 
 #ENV DEBCONF_NOWARNINGS yes
+ENV DEBIAN_FRONTEND=noninteractive
+
 RUN apt-get update
 RUN apt-get install -y git sysstat vim tmux
 
