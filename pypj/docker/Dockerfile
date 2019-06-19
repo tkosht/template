@@ -11,6 +11,9 @@ RUN apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev \
     libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
     xz-utils tk-dev
 
+# - for openai baselines
+RUN apt-get install -y cmake libopenmpi-dev python3-dev zlib1g-dev
+
 # - upgrade system
 RUN apt-get upgrade -y
 
