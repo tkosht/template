@@ -1,5 +1,6 @@
 #!/bin/sh
 # echo "$0 [pyenv|simple|--debug] " >&2
+
 d=$(cd $(dirname $0)/../../ && pwd)
 
 log_dir="$d/log"

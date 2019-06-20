@@ -8,9 +8,8 @@ if [ "$1" != "" ]; then
 fi
 
 # pyver="miniconda3-latest"
-pyver="python3.6"
+pyver="3.6.8"
 pyenv install -s $pyver
-pyenv versions
 pyenv virtualenv $pyver $env_name
 
 mkdir -p ~/pj/$env_name
@@ -18,4 +17,9 @@ cd ~/pj/$env_name
 pyenv local $env_name
 
 echo pip install -r $d/requirements.txt
+pip install --upgrade pip
 pip install -r $d/../../requirements.txt
+git clone https://github.com/pytorch/examples.git
+pip install https://download.pytorch.org/whl/cu100/torch-1.0.1.post2-cp36-cp36m-linux_x86_64.whl
+pip install torchvision
+
