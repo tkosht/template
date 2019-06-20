@@ -1,5 +1,4 @@
-# sconfig (simple config)
-template repository
+# README for `template` repository
 
 # environment
 
