@@ -11,7 +11,7 @@
 - PyTorch: 1.0.1, 1.1.0
 
 
-# installation
+# installation for docker environment
 
 ## cuda10
 ```bash
