@@ -8,7 +8,7 @@
     - 4 cpu cores
 - GPU: GeForce GTX 1080Ti
 - CUDA: release 10.1
-- PyTorch: 1.0.1
+- PyTorch: 1.0.1, 1.1.0
 
 
 # installation
