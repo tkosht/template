@@ -40,4 +40,4 @@ ENV PATH $PATH:$home_dir/.pyenv/shims
 WORKDIR $tmp_script_dir
 RUN sh install_pyenv.sh
 
-WORKDIR $lab_dir/examples/vae
+WORKDIR $lab_dir

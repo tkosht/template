@@ -39,6 +39,5 @@ RUN git clone https://github.com/pytorch/examples.git
 RUN chown -R gpuser:gpuser $home_dir
 
 USER gpuser
-# WORKDIR $lab_dir
-WORKDIR $lab_dir/examples/vae
+WORKDIR $lab_dir
 
