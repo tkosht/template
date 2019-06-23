@@ -32,9 +32,10 @@ COPY config/tmux/.tmux.conf $home_dir
 ARG lab_dir=$home_dir/pj/lab
 RUN mkdir -p $lab_dir
 WORKDIR $lab_dir
+RUN pip3 install https://download.pytorch.org/whl/cu100/torch-1.1.0-cp36-cp36m-linux_x86_64.whl
+RUN pip3 install https://download.pytorch.org/whl/cu100/torchvision-0.3.0-cp36-cp36m-linux_x86_64.whl
 RUN git clone https://github.com/pytorch/examples.git
-RUN pip3 install https://download.pytorch.org/whl/cu100/torch-1.0.1.post2-cp36-cp36m-linux_x86_64.whl
-RUN pip3 install torchvision
+
 RUN chown -R gpuser:gpuser $home_dir
 
 USER gpuser

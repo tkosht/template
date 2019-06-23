@@ -25,6 +25,6 @@ if [ "$1" = "-d" -o "$1" = "--debug" ]; then
 fi
 
 echo "docker build -f $docker_file $d -t gpuenv:$tag $opt_cache"
-docker build -f $docker_file $d -t gpuenv:$tag $opt_cache
+stdbuf -oL docker build -f $docker_file $d -t gpuenv:$tag $opt_cache | tee -a $log_file
 
 echo "`date +'%Y/%m/%d %T'` - End" >> $log_file

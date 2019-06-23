@@ -1,0 +1,19 @@
+version: '2.3'
+
+services:
+  simple:
+    image: gpuenv:simple
+    build:
+        context: ../
+        dockerfile: docker/Dockerfile
+    runtime: nvidia
+    volumes:
+        - ./:/home/gpuser/pj/lab/gpuenv
+  pyenv:
+    image: gpuenv:pyenv
+    build:
+        context: ../
+        dockerfile: docker/pyenv/Dockerfile
+    runtime: nvidia
+    volumes:
+        - ./:/home/gpuser/pj/lab/gpuenv
