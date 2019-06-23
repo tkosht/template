@@ -66,6 +66,13 @@ execute vae example for pytorch
 docker run --runtime=nvidia -it --rm gpuenv:simple python main.py
 ```
 
+or do as follow:
+
+```bash
+cd $(git rev-parse --show-toplevel)/pypj/scripts/docker
+sh run.sh
+```
+
 # to build docker for gpuenv:pyenv
 ```bash
 cd $(git rev-parse --show-toplevel)/pypj/scripts/docker
