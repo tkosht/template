@@ -1,2 +1,13 @@
 #!/bin/sh
-docker run --runtime=nvidia --rm gpu-python nvidia-smi
+d=$(cd $(dirname $0)/../../ && pwd)
+
+hostdir="$d/data"                   # host
+labdir="/home/gpuser/pj/lab"        # container
+datadir="$labdir/examples/data"     # container
+workdir="$labdir/examples/vae"      # container
+
+mkdir -p $hostdir
+
+opts="-v $hostdir:$datadir -w $workdir -it --rm"
+docker run --runtime=nvidia $opts gpuenv:simple python main.py
+# docker run --runtime=nvidia $opts gpuenv:pyenv python main.py

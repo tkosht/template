@@ -2,7 +2,9 @@ FROM nvidia/cuda
 
 MAINTAINER tkosht <takehito.oshita.business@gmail.com>
 
-RUN apt-get update -y && apt-get install -y git sysstat vim tmux
+ENV TZ Asia/Tokyo
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update -y && apt-get upgrade -y && apt-get install -y git sysstat vim tmux tzdata
 
 RUN apt-get install -y --no-install-recommends \
         python3-dev \
@@ -40,4 +42,3 @@ RUN chown -R gpuser:gpuser $home_dir
 
 USER gpuser
 WORKDIR $lab_dir
-

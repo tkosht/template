@@ -2,17 +2,13 @@ FROM nvidia/cuda
 
 MAINTAINER tkosht <takehito.oshita.business@gmail.com>
 
-#ENV DEBCONF_NOWARNINGS yes
+ENV TZ Asia/Tokyo
 ENV DEBIAN_FRONTEND=noninteractive
-
-RUN apt-get update
-RUN apt-get install -y git sysstat vim tmux
+RUN apt-get update -y && apt-get upgrade -y && apt-get install -y git sysstat vim tmux tzdata
 
 # - for virtualenv / pyenv
 RUN apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev \
     libreadline-dev libsqlite3-dev wget curl
-# llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev
-
 
 # - upgrade system
 RUN apt-get upgrade -y
